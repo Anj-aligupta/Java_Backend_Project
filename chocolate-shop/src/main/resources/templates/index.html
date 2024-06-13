@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Chocolate Shop</title>
+</head>
+<body>
+    <h1>Chocolate Shop</h1>
+    <a href="/showNewChocolateForm">Add New Chocolate</a>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        <tr th:each="chocolate : ${chocolates}">
+            <td th:text="${chocolate.id}"></td>
+            <td th:text="${chocolate.name}"></td>
+            <td th:text="${chocolate.description}"></td>
+            <td th:text="${chocolate.price}"></td>
+            <td>
+                <a th:href="@{/showFormForUpdate/{id}(id=${chocolate.id})}">Edit</a>
+                <a th:href="@{/deleteChocolate/{id}(id=${chocolate.id})}">Delete</a>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+
+
